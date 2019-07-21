@@ -1,26 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/emin93/react-native-template-typescript
- *
- * @format
- */
-
-import React, { Fragment } from 'react'
-import { SafeAreaView, ScrollView, View, Text, StatusBar } from 'react-native'
-
+import React, { Fragment, useState } from 'react'
+import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen'
+import { Counter } from './components/Counter'
 import { styles } from './styles'
 
 const App = () => {
+  const [amountOfPullUps, setState] = useState(0)
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
@@ -40,25 +28,7 @@ const App = () => {
                 Welcome to PUC the Pull-Up-Counter
               </Text>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
+            <Counter />
           </View>
         </ScrollView>
       </SafeAreaView>
