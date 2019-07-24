@@ -1,14 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
-import {
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen'
 import { Counter } from './components/Counter'
+import { Header } from './components/Header'
 import { styles } from './styles'
 
-const App = () => {
-  const [amountOfPullUps, setState] = useState(0)
+export const App = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
@@ -23,11 +19,7 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
-            <View style={styles.sectionMainTitle}>
-              <Text style={styles.mainTitle}>
-                Welcome to PUC the Pull-Up-Counter
-              </Text>
-            </View>
+            <Header />
             <Counter />
           </View>
         </ScrollView>
@@ -35,5 +27,3 @@ const App = () => {
     </Fragment>
   )
 }
-
-export default App
