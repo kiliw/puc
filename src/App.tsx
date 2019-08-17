@@ -1,29 +1,34 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
-import { Counter } from './components/Counter'
+import { Provider } from 'react-redux'
+import { Counter } from './components/Counter/index'
 import { Header } from './components/Header'
+import configureStore from './configureStore'
 import { styles } from './styles'
 
 export const App = () => {
+  const { store } = configureStore()
   return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}
-        >
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+    <Provider store={store}>
+      <Fragment>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}
+          >
+            {global.HermesInternal == null ? null : (
+              <View style={styles.engine}>
+                <Text style={styles.footer}>Engine: Hermes</Text>
+              </View>
+            )}
+            <View style={styles.body}>
+              <Header />
+              <Counter />
             </View>
-          )}
-          <View style={styles.body}>
-            <Header />
-            <Counter />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
+          </ScrollView>
+        </SafeAreaView>
+      </Fragment>
+    </Provider>
   )
 }
