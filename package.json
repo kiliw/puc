@@ -4,12 +4,18 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
+    "start:ios": "react-native run-ios",
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "tslint --project tsconfig.json"
   },
   "dependencies": {
     "react": "16.8.6",
-    "react-native": "0.60.3"
+    "react-native": "0.60.3",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-create-reducer": "^2.0.0",
+    "typesafe-actions": "^4.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
@@ -19,6 +25,7 @@
     "@types/ramda": "^0.26.16",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.1",
+    "@types/react-redux": "^7.1.1",
     "@types/react-test-renderer": "^16.8.2",
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
