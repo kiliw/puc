@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Text, TouchableHighlight, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from '../../styles'
@@ -12,39 +12,46 @@ export const Counter = () => {
 
   return (
     <View style={styles.sectionContainer}>
-      <Text style={styles.sectionTitle}>
-        Total Pull Ups: {amountOfTotalPullUps}
-      </Text>
-      <Text style={styles.sectionTitle}>Pull Ups: {amountOfPullUps}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableHighlight
-          onPress={() => dispatch(actions.decreasePullUps())}
-          underlayColor="white"
-        >
-          <View style={[styles.button, styles.buttonIncrease]}>
-            <Text style={styles.buttonText}>-</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => dispatch(actions.increasePullUps())}
-          underlayColor="white"
-        >
-          <View style={[styles.button, styles.buttonIncrease]}>
-            <Text style={styles.buttonText}>+</Text>
-          </View>
-        </TouchableHighlight>
+      <View>
+        <Text style={styles.sectionTitle}>
+          Total Pull Ups: {amountOfTotalPullUps}
+        </Text>
+        <Text style={styles.sectionTitle}>Pull Ups: {amountOfPullUps}</Text>
       </View>
-      <TouchableHighlight
-        onPress={() => {
-          dispatch(actions.savePullUps(amountOfPullUps))
-          dispatch(actions.resetPullUps())
-        }}
-        underlayColor="white"
-      >
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Save PullUps</Text>
+      <View>
+        <View style={styles.buttonContainer}>
+          <TouchButton
+            style={[styles.button, styles.buttonIncrease]}
+            text="-"
+            onPress={() => dispatch(actions.decreasePullUps())}
+          />
+          <TouchButton
+            style={[styles.button, styles.buttonIncrease]}
+            text="+"
+            onPress={() => dispatch(actions.increasePullUps())}
+          />
         </View>
-      </TouchableHighlight>
+        <TouchButton
+          text="Save PullUps"
+          style={styles.button}
+          onPress={() => {
+            dispatch(actions.savePullUps(amountOfPullUps))
+            dispatch(actions.resetPullUps())
+          }}
+        />
+      </View>
     </View>
   )
 }
+
+const TouchButton: FunctionComponent<{
+  style?: any
+  text: string
+  onPress: () => void
+}> = ({ text, style, onPress }) => (
+  <TouchableHighlight onPress={onPress} underlayColor="white">
+    <View style={style}>
+      <Text style={styles.buttonText}>{text}</Text>
+    </View>
+  </TouchableHighlight>
+)

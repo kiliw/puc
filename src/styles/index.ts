@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export const styles = StyleSheet.create({
   body: {
@@ -9,7 +8,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f7452a',
     borderRadius: 5,
-    height: 40,
+    height: 60,
+    justifyContent: 'center',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -39,11 +39,14 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   mainTitle: {
-    color: Colors.black,
+    color: '#000000',
     fontSize: 32,
     fontWeight: '600',
   },
-
+  safeArea: {
+    backgroundColor: '#fcf2d9',
+    flex: 1,
+  },
   scrollView: {
     backgroundColor: '#fcf2d9',
   },
@@ -52,7 +55,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionDescription: {
-    color: Colors.dark,
+    color: '#333333',
     fontSize: 18,
     fontWeight: '400',
     marginTop: 8,
@@ -64,7 +67,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
-    color: Colors.black,
+    color: '#000000',
     fontSize: 24,
     fontWeight: '600',
   },

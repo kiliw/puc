@@ -12,16 +12,11 @@ export const App = () => {
     <Provider store={store}>
       <Fragment>
         <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
+        <SafeAreaView style={styles.safeArea}>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}
           >
-            {global.HermesInternal == null ? null : (
-              <View style={styles.engine}>
-                <Text style={styles.footer}>Engine: Hermes</Text>
-              </View>
-            )}
             <View style={styles.body}>
               <Header />
               <Counter />
