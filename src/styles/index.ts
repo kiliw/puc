@@ -9,13 +9,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f7452a',
     borderRadius: 5,
-    height: 25,
-    width: 100,
+    height: 40,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     margin: 20,
+  },
+  buttonIncrease: {
+    width: 100,
   },
   buttonText: {
     color: '#fffbf2',
