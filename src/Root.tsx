@@ -5,10 +5,29 @@ import { Home } from './components/Home'
 
 const AppNavigator = createStackNavigator(
   {
-    Counter,
-    Home,
+    Counter: {
+      navigationOptions: () => ({
+        title: `Counter`,
+      }),
+      screen: Counter,
+    },
+    Home: {
+      navigationOptions: () => ({
+        title: `PUC`,
+      }),
+      screen: Home,
+    },
   },
   {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fcf2d9',
+      },
+      headerTintColor: '#f7452a',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
     initialRouteName: 'Home',
   },
 )
