@@ -1,7 +1,9 @@
-import React, { FunctionComponent } from 'react'
-import { Text, TouchableHighlight, View } from 'react-native'
+import React from 'react'
+import { Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from '../../styles'
+import { TouchButton } from '../Home'
+import { Layout } from '../Layout'
 import * as actions from './actions'
 import * as selectors from './reducer'
 
@@ -11,7 +13,7 @@ export const Counter = () => {
   const amountOfTotalPullUps = useSelector(selectors.getTotalPullUps)
 
   return (
-    <View style={styles.sectionContainer}>
+    <Layout>
       <View>
         <Text style={styles.sectionTitle}>
           Total Pull Ups: {amountOfTotalPullUps}
@@ -40,18 +42,6 @@ export const Counter = () => {
           }}
         />
       </View>
-    </View>
+    </Layout>
   )
 }
-
-const TouchButton: FunctionComponent<{
-  style?: any
-  text: string
-  onPress: () => void
-}> = ({ text, style, onPress }) => (
-  <TouchableHighlight onPress={onPress} underlayColor="white">
-    <View style={style}>
-      <Text style={styles.buttonText}>{text}</Text>
-    </View>
-  </TouchableHighlight>
-)

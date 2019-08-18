@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   body: {
     backgroundColor: '#fcf2d9',
+    marginTop: 32,
+    paddingHorizontal: 24,
   },
   button: {
     alignItems: 'center',
@@ -50,10 +52,6 @@ export const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#fcf2d9',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
   sectionDescription: {
     color: '#333333',
     fontSize: 18,
@@ -63,7 +61,7 @@ export const styles = StyleSheet.create({
   sectionMainTitle: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 32,
+    marginVertical: 32,
     paddingHorizontal: 24,
   },
   sectionTitle: {

@@ -1,22 +1,37 @@
-import React, { Fragment } from 'react'
-import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native'
-import { Counter } from './components/Counter/index'
-import { Header } from './components/Header'
-import { styles } from './styles'
+import React from 'react'
+import { createAppContainer, createStackNavigator } from 'react-navigation'
+import { Counter } from './components/Counter'
+import { Home } from './components/Home'
 
-export const Root = () => (
-  <Fragment>
-    <StatusBar barStyle="dark-content" />
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}
-      >
-        <View style={styles.body}>
-          <Header />
-          <Counter />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  </Fragment>
+const AppNavigator = createStackNavigator(
+  {
+    Counter: {
+      navigationOptions: () => ({
+        title: `Counter`,
+      }),
+      screen: Counter,
+    },
+    Home: {
+      navigationOptions: () => ({
+        title: `PUC`,
+      }),
+      screen: Home,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fcf2d9',
+      },
+      headerTintColor: '#f7452a',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+    initialRouteName: 'Home',
+  },
 )
+
+const AppContainer = createAppContainer(AppNavigator)
+
+export const Root = () => <AppContainer />
