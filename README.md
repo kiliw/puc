@@ -8,7 +8,7 @@ The idea is to keep track of the number of pull ups you did per day. This should
 
 ## App Icon
 
-![Icon-App-40x40@2x](https://user-images.githubusercontent.com/43745180/63229379-e851b180-c1ff-11e9-8c21-e40fe94dd04b.png)
+![Icon-App-60x60@2x](https://user-images.githubusercontent.com/43745180/63287759-73dc4880-c2bb-11e9-82b9-d5931307e242.png)
 
 ## Current Views (maybe not up to date ;)
 
