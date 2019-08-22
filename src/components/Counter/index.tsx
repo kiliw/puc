@@ -2,23 +2,23 @@ import * as R from 'ramda'
 import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import * as selectors from '../../selectors'
 import { styles } from '../../styles'
 import { TouchButton } from '../Home'
 import { Layout } from '../Layout'
 import * as actions from './actions'
 import { decrease, increase } from './helpers'
-import * as selectors from './reducer'
 
 export const Counter = () => {
   const dispatch = useDispatch()
   const amountOfTotalPullUps = useSelector(selectors.getTotalPullUps)
-  const [currentPullUps, updatePullUps] = useState()
+  const [currentPullUps = 0, updatePullUps] = useState()
 
   return (
     <Layout>
       <View>
         <Text style={styles.sectionTitle}>
-          Total Pull Ups: {amountOfTotalPullUps}
+          Total Pull Ups: {amountOfTotalPullUps ? amountOfTotalPullUps : 0}
         </Text>
         <Text style={styles.sectionTitle}>Pull Ups: {currentPullUps}</Text>
       </View>
@@ -50,6 +50,14 @@ export const Counter = () => {
           style={styles.button}
           onPress={() => {
             dispatch(actions.savePullUps(currentPullUps))
+            updatePullUps(0)
+          }}
+        />
+        <TouchButton
+          text="Save Day"
+          style={styles.button}
+          onPress={() => {
+            dispatch(actions.saveDay(amountOfTotalPullUps))
             updatePullUps(0)
           }}
         />
