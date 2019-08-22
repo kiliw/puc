@@ -12,7 +12,7 @@ const MOCK_STATE: AppState = Object.freeze({
 })
 
 describe('Pull Up selectors', () => {
-  it('A user has done 20 Pull Ups in total', () => {
-    expect(getTotalPullUps(MOCK_STATE)).toEqual(20)
+  it('A user has done 22 Pull Ups in the last session', () => {
+    expect(getTotalPullUps(MOCK_STATE)).toEqual(22)
   })
 })
