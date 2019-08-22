@@ -1,16 +1,18 @@
-import React from 'react'
+import * as R from 'ramda'
+import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from '../../styles'
 import { TouchButton } from '../Home'
 import { Layout } from '../Layout'
 import * as actions from './actions'
+import { decrease, increase } from './helpers'
 import * as selectors from './reducer'
 
 export const Counter = () => {
   const dispatch = useDispatch()
-  const amountOfPullUps = useSelector(selectors.getPullUps)
   const amountOfTotalPullUps = useSelector(selectors.getTotalPullUps)
+  const [currentPullUps, updatePullUps] = useState()
 
   return (
     <Layout>
@@ -18,27 +20,37 @@ export const Counter = () => {
         <Text style={styles.sectionTitle}>
           Total Pull Ups: {amountOfTotalPullUps}
         </Text>
-        <Text style={styles.sectionTitle}>Pull Ups: {amountOfPullUps}</Text>
+        <Text style={styles.sectionTitle}>Pull Ups: {currentPullUps}</Text>
       </View>
       <View>
         <View style={styles.buttonContainer}>
           <TouchButton
             style={[styles.button, styles.buttonIncrease]}
             text="-"
-            onPress={() => dispatch(actions.decreasePullUps())}
+            onPress={() =>
+              R.pipe(
+                decrease,
+                updatePullUps,
+              )(currentPullUps)
+            }
           />
           <TouchButton
             style={[styles.button, styles.buttonIncrease]}
             text="+"
-            onPress={() => dispatch(actions.increasePullUps())}
+            onPress={() =>
+              R.pipe(
+                increase,
+                updatePullUps,
+              )(currentPullUps)
+            }
           />
         </View>
         <TouchButton
           text="Save PullUps"
           style={styles.button}
           onPress={() => {
-            dispatch(actions.savePullUps(amountOfPullUps))
-            dispatch(actions.resetPullUps())
+            dispatch(actions.savePullUps(currentPullUps))
+            updatePullUps(0)
           }}
         />
       </View>

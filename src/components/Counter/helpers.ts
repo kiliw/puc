@@ -1,20 +1,15 @@
 import * as R from 'ramda'
 
-export const increase: (state: any, action: any) => any = R.pipe(
-  R.nthArg(0),
-  R.add(1),
-)
+export const increase: (value: number) => number = R.add(1)
 
-const decreaseIfGreaterThanOne: (value: number) => number = R.ifElse(
-  R.lte(1),
+const isLargerThanZero: (value: number) => number = R.ifElse(
+  R.lt(1),
   R.flip(R.subtract)(1),
   R.always(0),
 )
 
-export const decrease: (state: any, action: any) => any = R.pipe(
-  R.nthArg(0),
-  decreaseIfGreaterThanOne,
-)
+export const decrease: (value: number) => number = (value) =>
+  R.pipe(isLargerThanZero)(value)
 
 export const save: (state: any, action: any) => any = R.converge(R.add, [
   R.nthArg(0),
