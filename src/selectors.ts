@@ -1,14 +1,14 @@
 import * as R from 'ramda'
-import { Day, Days } from './components/Counter/reducer'
+import { PullUpHistory, PullUpSession } from './components/Counter/reducer'
 import { AppState } from './reducers'
 
 export const getTotalPullUps: (state: AppState) => number = R.pipe<
   AppState,
-  Days,
-  Day,
+  PullUpHistory,
+  PullUpSession,
   number
 >(
-  R.prop('days'),
+  R.prop('pullUpHistory'),
   R.head,
   R.prop('totalPullUps'),
 )

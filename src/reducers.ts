@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import { dayReducer, Days } from './components/Counter/reducer'
+import { PullUpHistory, sessionReducer } from './components/Counter/reducer'
 
 export interface AppState {
-  days: Days
+  pullUpHistory: PullUpHistory
 }
 
 export const createRootReducer = () =>
   combineReducers({
-    days: dayReducer,
+    pullUpHistory: sessionReducer,
   })

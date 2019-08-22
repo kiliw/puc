@@ -2,13 +2,12 @@ import { AppState } from './reducers'
 import { getTotalPullUps } from './selectors'
 
 const MOCK_STATE: AppState = Object.freeze({
-  days: [
+  pullUpHistory: [
     {
+      date: 1,
       totalPullUps: 20,
     },
-    {
-      totalPullUps: 22,
-    },
+    { date: 2, totalPullUps: 22 },
   ],
 })
 

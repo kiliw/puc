@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import { Days } from './reducer'
+import { PullUpHistory } from './reducer'
 
 export const increase: (value: number) => number = R.add(1)
 
@@ -20,9 +20,12 @@ export const save: (state: any, action: any) => any = R.converge(R.add, [
   ),
 ])
 
-export const saveDayToStore: (state: Days, action: any) => Days = (
-  state,
-  action,
-) => {
-  return [...state, { totalPullUps: action.payload }]
+export const saveDayToStore: (
+  state: PullUpHistory,
+  action: any,
+) => PullUpHistory = (state, action) => {
+  return [
+    ...state,
+    { totalPullUps: action.payload, date: new Date().getDate() },
+  ]
 }

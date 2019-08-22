@@ -49,15 +49,7 @@ export const Counter = () => {
           text="Save PullUps"
           style={styles.button}
           onPress={() => {
-            dispatch(actions.savePullUps(currentPullUps))
-            updatePullUps(0)
-          }}
-        />
-        <TouchButton
-          text="Save Day"
-          style={styles.button}
-          onPress={() => {
-            dispatch(actions.saveDay(amountOfTotalPullUps))
+            dispatch(actions.saveSession(currentPullUps))
             updatePullUps(0)
           }}
         />
