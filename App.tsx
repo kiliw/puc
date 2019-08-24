@@ -1,18 +1,11 @@
 import { Ionicons } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
-import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
 import React, { useState } from 'react'
-import { Platform, StatusBar, StyleSheet } from 'react-native'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import { Loading } from './src/components/Loading'
-import configureStore from './src/configureStore'
-import AppNavigator from './src/navigation/AppNavigator'
+import { Root } from './src/Root'
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
-  const { store, persistor } = configureStore()
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
@@ -22,23 +15,12 @@ export default function App(props) {
       />
     )
   } else {
-    return (
-      <Provider store={store}>
-        <PersistGate loading={<Loading />} persistor={persistor}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </PersistGate>
-      </Provider>
-    )
+    return <Root />
   }
 }
 
 async function loadResourcesAsync() {
   await Promise.all([
-    Asset.loadAsync([
-      require('./src/assets/images/robot-dev.png'),
-      require('./src/assets/images/robot-prod.png'),
-    ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       ...Ionicons.font,
@@ -58,10 +40,3 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true)
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
-})
