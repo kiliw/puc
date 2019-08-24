@@ -6,6 +6,16 @@ Keep track of your pull ups and gain some power 💪
 
 The idea is to keep track of the number of pull ups you did per day. This should be done by counting them for each session and save them to the total amount per day. Each day a new counter starts.
 
+## How to run it
+
+The project was created via [expo](https://docs.expo.io/versions/v34.0.0/introduction/installation/).
+
+To run the app use
+
+`yarn start`
+
+and follow the instructions on the screen. You have to download the expo app from the apple app store or google play store.
+
 ## App Icon
 
 ![Icon-App-60x60@2x](https://user-images.githubusercontent.com/43745180/63287759-73dc4880-c2bb-11e9-82b9-d5931307e242.png)
