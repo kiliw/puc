@@ -1,26 +1,40 @@
+import { H3 } from 'native-base'
 import React, { FunctionComponent } from 'react'
 import { Text, View } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
+import { useSelector } from 'react-redux'
+import * as selectors from '../selectors'
 import { styles } from '../styles'
 import { Header } from './Header'
 
 export const Home: FunctionComponent = (
   props, // TODO Add typings for the navigation
-) => (
-  <View>
-    <Header />
+) => {
+  const overAllPullUps = useSelector(selectors.getOverAllPullUps)
+  return (
     <View>
-      <View style={{ marginBottom: 64 }}>
-        <Text style={{ textAlign: 'center' }}>
-          Go and count your pull ups!{' '}
-        </Text>
-        <Text style={{ textAlign: 'center' }}>
-          This is a simple counter to keep track of your pull ups.
-        </Text>
+      <Header />
+      <View>
+        <View style={{ marginBottom: 64 }}>
+          <Text style={{ textAlign: 'center' }}>
+            Go and count your pull ups!{' '}
+          </Text>
+          <Text style={{ textAlign: 'center' }}>
+            This is a simple counter to keep track of your pull ups.
+          </Text>
+        </View>
+      </View>
+      <View>
+        <View style={{ marginBottom: 64 }}>
+          <H3 style={{ textAlign: 'center' }}>
+            Checkout your overall amount of pull ups
+          </H3>
+          <H3 style={{ textAlign: 'center' }}>{overAllPullUps}</H3>
+        </View>
       </View>
     </View>
-  </View>
-)
+  )
+}
 
 export const TouchButton: FunctionComponent<{
   style?: any

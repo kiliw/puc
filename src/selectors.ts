@@ -27,3 +27,15 @@ export const getLastTenEntries: (state: AppState) => PullUpHistory = R.pipe<
   R.reverse,
   R.slice(0, 11),
 )
+
+export const getOverAllPullUps: (state: AppState) => number = R.pipe<
+  AppState,
+  PullUpHistory,
+  number
+>(
+  getPullUpHistory,
+  R.reduce(
+    (overAllPullUps, { totalPullUps }) => R.add(overAllPullUps, totalPullUps),
+    0,
+  ),
+)

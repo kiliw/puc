@@ -1,9 +1,8 @@
+import { Button, H1 } from 'native-base'
 import * as R from 'ramda'
 import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { styles } from '../../styles'
-import { TouchButton } from '../Home'
 import * as actions from './actions'
 import { decrease, increase } from './helpers'
 import { SessionHistory } from './SessionHistory'
@@ -15,41 +14,61 @@ export const Counter = () => {
   return (
     <View>
       <View>
-        <Text style={styles.sectionTitle}>Pull Ups: {currentPullUps}</Text>
+        <H1>Pull Ups: {currentPullUps}</H1>
       </View>
       <View>
         <View style={styles.buttonContainer}>
-          <TouchButton
+          <Button
+            large
             style={[styles.button, styles.buttonIncrease]}
-            text="-"
             onPress={() =>
               R.pipe(
                 decrease,
                 updatePullUps,
               )(currentPullUps)
             }
-          />
-          <TouchButton
+          >
+            <Text>-</Text>
+          </Button>
+          <Button
+            large
             style={[styles.button, styles.buttonIncrease]}
-            text="+"
             onPress={() =>
               R.pipe(
                 increase,
                 updatePullUps,
               )(currentPullUps)
             }
-          />
+          >
+            <Text>+</Text>
+          </Button>
         </View>
-        <TouchButton
-          text="Save PullUps"
+        <Button
+          large
           style={styles.button}
           onPress={() => {
             dispatch(actions.saveSession(currentPullUps))
             updatePullUps(0)
           }}
-        />
+        >
+          <Text>Save Pull Ups</Text>
+        </Button>
       </View>
       <SessionHistory />
     </View>
   )
 }
+
+export const styles = StyleSheet.create({
+  button: {
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 20,
+  },
+  buttonIncrease: {
+    width: 100,
+  },
+})
