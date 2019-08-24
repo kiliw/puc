@@ -1,4 +1,4 @@
-import { H3 } from 'native-base'
+import { H1, H3 } from 'native-base'
 import React, { FunctionComponent } from 'react'
 import { Text, View } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
@@ -26,10 +26,12 @@ export const Home: FunctionComponent = (
       </View>
       <View>
         <View style={{ marginBottom: 64 }}>
-          <H3 style={{ textAlign: 'center' }}>
+          <Text style={{ textAlign: 'center' }}>
             Checkout your overall amount of pull ups
-          </H3>
-          <H3 style={{ textAlign: 'center' }}>{overAllPullUps}</H3>
+          </Text>
+          <Text style={{ fontSize: 60, paddingTop: 30, textAlign: 'center' }}>
+            {overAllPullUps}
+          </Text>
         </View>
       </View>
     </View>
