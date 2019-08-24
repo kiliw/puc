@@ -5,8 +5,8 @@ import {
   createStackNavigator,
 } from 'react-navigation'
 import TabBarIcon from '../components/TabBarIcon'
+import CounterScreen from '../screens/CounterScreen'
 import HomeScreen from '../screens/HomeScreen'
-import LinksScreen from '../screens/LinksScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 
 const config = Platform.select({
@@ -37,24 +37,24 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = ''
 
-const LinksStack = createStackNavigator(
+const CounterStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Counter: CounterScreen,
   },
   config,
 )
 
-LinksStack.navigationOptions = {
+CounterStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-fitness' : 'md-fitness'}
     />
   ),
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Counter',
 }
 
-LinksStack.path = ''
+CounterStack.path = ''
 
 const SettingsStack = createStackNavigator(
   {
@@ -64,20 +64,21 @@ const SettingsStack = createStackNavigator(
 )
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
     />
   ),
+  tabBarLabel: 'Settings',
 }
 
 SettingsStack.path = ''
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  /* tslint:disable-next-line */
+  CounterStack,
   SettingsStack,
 })
 
