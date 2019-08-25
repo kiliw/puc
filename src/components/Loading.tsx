@@ -3,7 +3,7 @@ import { ActivityIndicator, Text, View } from 'react-native'
 import { styles } from '../styles'
 
 export const Loading = () => (
-  <View style={styles.sectionContainer}>
+  <View>
     <View style={styles.sectionMainTitle}>
       <Text style={styles.mainTitle}>Loading...</Text>
     </View>

@@ -1,37 +1,19 @@
 import React from 'react'
-import { createAppContainer, createStackNavigator } from 'react-navigation'
-import { Counter } from './components/Counter'
-import { Home } from './components/Home'
+import { Platform, StatusBar } from 'react-native'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Loading } from './components/Loading'
+import configureStore from './configureStore'
+import AppNavigator from './navigation/AppNavigator'
 
-const AppNavigator = createStackNavigator(
-  {
-    Counter: {
-      navigationOptions: () => ({
-        title: `Counter`,
-      }),
-      screen: Counter,
-    },
-    Home: {
-      navigationOptions: () => ({
-        title: `PUC`,
-      }),
-      screen: Home,
-    },
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#fcf2d9',
-      },
-      headerTintColor: '#f7452a',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-    initialRouteName: 'Home',
-  },
-)
-
-const AppContainer = createAppContainer(AppNavigator)
-
-export const Root = () => <AppContainer />
+export const Root = () => {
+  const { store, persistor } = configureStore()
+  return (
+    <Provider store={store}>
+      <PersistGate loading={<Loading />} persistor={persistor}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        <AppNavigator />
+      </PersistGate>
+    </Provider>
+  )
+}
