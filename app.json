@@ -1,4 +1,25 @@
 {
-  "name": "puc",
-  "displayName": "puc"
+  "expo": {
+    "name": "PUC - Pull Up Counter",
+    "slug": "puc",
+    "privacy": "unlisted",
+    "sdkVersion": "34.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "0.0.1",
+    "githubUrl": "https://github.com/kiliw/puc-expo",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/appIcon.png",
+    "splash": {
+      "image": "./src/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
 }

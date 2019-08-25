@@ -1,47 +1,74 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { styles } from '../../styles'
-import { TouchButton } from '../Home'
-import { Layout } from '../Layout'
+import { Button, H1 } from 'native-base'
+import * as R from 'ramda'
+import React, { useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { useDispatch } from 'react-redux'
 import * as actions from './actions'
-import * as selectors from './reducer'
+import { decrease, increase } from './helpers'
+import { SessionHistory } from './SessionHistory'
 
 export const Counter = () => {
   const dispatch = useDispatch()
-  const amountOfPullUps = useSelector(selectors.getPullUps)
-  const amountOfTotalPullUps = useSelector(selectors.getTotalPullUps)
+  const [currentPullUps = 0, updatePullUps] = useState()
 
   return (
-    <Layout>
+    <View>
       <View>
-        <Text style={styles.sectionTitle}>
-          Total Pull Ups: {amountOfTotalPullUps}
-        </Text>
-        <Text style={styles.sectionTitle}>Pull Ups: {amountOfPullUps}</Text>
+        <H1>Pull Ups: {currentPullUps}</H1>
       </View>
       <View>
         <View style={styles.buttonContainer}>
-          <TouchButton
+          <Button
+            large
             style={[styles.button, styles.buttonIncrease]}
-            text="-"
-            onPress={() => dispatch(actions.decreasePullUps())}
-          />
-          <TouchButton
+            onPress={() =>
+              R.pipe(
+                decrease,
+                updatePullUps,
+              )(currentPullUps)
+            }
+          >
+            <Text>-</Text>
+          </Button>
+          <Button
+            large
             style={[styles.button, styles.buttonIncrease]}
-            text="+"
-            onPress={() => dispatch(actions.increasePullUps())}
-          />
+            onPress={() =>
+              R.pipe(
+                increase,
+                updatePullUps,
+              )(currentPullUps)
+            }
+          >
+            <Text>+</Text>
+          </Button>
         </View>
-        <TouchButton
-          text="Save PullUps"
+        <Button
+          large
           style={styles.button}
           onPress={() => {
-            dispatch(actions.savePullUps(amountOfPullUps))
-            dispatch(actions.resetPullUps())
+            dispatch(actions.saveSession(currentPullUps))
+            updatePullUps(0)
           }}
-        />
+        >
+          <Text>Save Pull Ups</Text>
+        </Button>
       </View>
-    </Layout>
+      <SessionHistory />
+    </View>
   )
 }
+
+export const styles = StyleSheet.create({
+  button: {
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 20,
+  },
+  buttonIncrease: {
+    width: 100,
+  },
+})
