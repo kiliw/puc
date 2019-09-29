@@ -3,7 +3,7 @@
     "name": "PUC - Pull Up Counter",
     "slug": "puc",
     "privacy": "unlisted",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": ["ios", "android", "web"],
     "version": "0.0.1",
     "githubUrl": "https://github.com/kiliw/puc-expo",
@@ -19,7 +19,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "kilocrimp.puc"
     }
   }
 }
