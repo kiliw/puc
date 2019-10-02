@@ -1,4 +1,3 @@
-import { H1, H3 } from 'native-base'
 import React, { FunctionComponent } from 'react'
 import { Text, View } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'

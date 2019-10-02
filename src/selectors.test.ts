@@ -5,9 +5,9 @@ const MOCK_STATE: AppState = Object.freeze({
   pullUpHistory: [
     {
       date: 1,
-      totalPullUps: 20,
+      pullUps: 20,
     },
-    { date: 2, totalPullUps: 22 },
+    { date: 2, pullUps: 22 },
   ],
 })
 

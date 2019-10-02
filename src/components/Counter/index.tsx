@@ -1,4 +1,4 @@
-import { Button, H1 } from 'native-base'
+import { Button, Container, H1, Icon } from 'native-base'
 import * as R from 'ramda'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
@@ -12,7 +12,7 @@ export const Counter = () => {
   const [currentPullUps = 0, updatePullUps] = useState()
 
   return (
-    <View>
+    <Container>
       <View>
         <H1>Pull Ups: {currentPullUps}</H1>
       </View>
@@ -55,7 +55,19 @@ export const Counter = () => {
         </Button>
       </View>
       <SessionHistory />
-    </View>
+      <Button
+        iconLeft
+        danger
+        large
+        style={styles.button}
+        onPress={() => {
+          dispatch(actions.clearSessions())
+        }}
+      >
+        <Icon name="trash" />
+        <Text>Delete History</Text>
+      </Button>
+    </Container>
   )
 }
 
