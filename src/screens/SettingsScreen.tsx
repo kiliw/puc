@@ -1,7 +1,7 @@
 import { ExpoConfigView } from '@expo/samples'
 import { Container } from 'native-base'
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView } from 'react-native'
 import { Settings } from '../components/Settings'
 
 export default function SettingsScreen() {
@@ -11,8 +11,10 @@ export default function SettingsScreen() {
    */
   return (
     <Container>
-      <ExpoConfigView />
-      <Settings />
+      <ScrollView>
+        <ExpoConfigView />
+        <Settings />
+      </ScrollView>
     </Container>
   )
 }

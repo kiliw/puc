@@ -1,13 +1,10 @@
-import { Container, Content, Header, Title } from 'native-base'
+import { Container, Content } from 'native-base'
 import React from 'react'
 import { Counter } from '../components/Counter'
 
 export default function CounterScreen() {
   return (
-    <Container>
-      <Header>
-        <Title>Counter</Title>
-      </Header>
+    <Container style={{ paddingHorizontal: 10 }}>
       <Content>
         <Counter />
       </Content>
@@ -16,5 +13,5 @@ export default function CounterScreen() {
 }
 
 CounterScreen.navigationOptions = {
-  header: null,
+  title: 'Counter',
 }
