@@ -1,4 +1,4 @@
-import { Container, Content, Header, List, ListItem, Text } from 'native-base'
+import { Container, Content, H1, List, ListItem, Text } from 'native-base'
 import * as R from 'ramda'
 import React, { FunctionComponent, ReactNode } from 'react'
 import { useSelector } from 'react-redux'
@@ -10,9 +10,7 @@ export const SessionHistory: FunctionComponent = () => {
 
   return (
     <Container>
-      <Header>
-        <Text>Last Entries</Text>
-      </Header>
+      <H1>Last Entries</H1>
       <Content>
         <List>{createHistory(lastEntries)}</List>
       </Content>
@@ -21,12 +19,13 @@ export const SessionHistory: FunctionComponent = () => {
 }
 
 const createSessionEntry = (
-  { totalPullUps }: PullUpSession,
+  { pullUps }: PullUpSession,
   index: number,
+  list,
 ): ReactNode => (
   <ListItem key={index}>
     <Text>
-      #{index}: PullUps: {totalPullUps}
+      #{list.length - index}: PullUps: {pullUps}
     </Text>
   </ListItem>
 )

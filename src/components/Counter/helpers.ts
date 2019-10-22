@@ -24,8 +24,5 @@ export const saveDayToStore: (
   state: PullUpHistory,
   action: any,
 ) => PullUpHistory = (state, action) => {
-  return [
-    ...state,
-    { totalPullUps: action.payload, date: new Date().getDate() },
-  ]
+  return [...state, { pullUps: action.payload, date: new Date().getDate() }]
 }

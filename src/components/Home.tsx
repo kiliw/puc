@@ -1,11 +1,10 @@
-import { H1, H3 } from 'native-base'
 import React, { FunctionComponent } from 'react'
 import { Text, View } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useSelector } from 'react-redux'
 import * as selectors from '../selectors'
 import { styles } from '../styles'
-import { Header } from './Header'
+import { HomeHeadline } from './Header'
 
 export const Home: FunctionComponent = (
   props, // TODO Add typings for the navigation
@@ -13,7 +12,7 @@ export const Home: FunctionComponent = (
   const overAllPullUps = useSelector(selectors.getOverAllPullUps)
   return (
     <View>
-      <Header />
+      <HomeHeadline />
       <View>
         <View style={{ marginBottom: 64 }}>
           <Text style={{ textAlign: 'center' }}>

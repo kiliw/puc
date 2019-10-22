@@ -3,17 +3,17 @@ import { getType } from 'typesafe-actions'
 import * as actions from './actions'
 
 export interface PullUpSession {
-  totalPullUps: number
+  pullUps: number
   date: number
 }
 export type PullUpHistory = PullUpSession[]
 
 export const sessionReducer = createReducer<PullUpHistory, any>([], {
   [getType(actions.saveSession)]: (state, action) => {
-    return [
-      ...state,
-      { totalPullUps: action.payload, date: createUnixTimeStamp() },
-    ]
+    return [...state, { pullUps: action.payload, date: createUnixTimeStamp() }]
+  },
+  [getType(actions.clearSessions)]: () => {
+    return []
   },
 })
 
